@@ -22,13 +22,12 @@
           <div class="round-pill"><span class="round-dot"></span><span id="statusText">红方走棋</span></div>
         </div>
 
-        <div class="game-options">
-          <label class="style-picker"><span class="difficulty-label">棋盘风格</span><select id="boardStyle" aria-label="选择棋盘和棋子风格"><option value="classic">经典</option><option value="retro" selected>复古</option><option value="dimensional">立体</option></select></label>
-          <label class="mode-picker"><span class="difficulty-label">对抗模式</span><select id="gameMode" aria-label="选择对战模式"><option value="ai">人机对抗</option><option value="local">双人对抗</option></select></label>
-          <label class="difficulty-picker"><span class="difficulty-label">电脑难度</span><select id="difficulty" aria-label="选择电脑对手难度"><option value="easy">简单</option><option value="medium" selected>普通</option><option value="hard">困难</option><option value="superhard">超难</option><option value="extreme">极难</option></select></label>
-        </div>
-
         <div class="board-wrap">
+          <div class="game-options">
+            <div class="style-picker"><span class="difficulty-label">棋盘风格</span><div class="segmented" id="boardStyle" role="group" aria-label="选择棋盘和棋子风格"><button class="active" data-style="classic" aria-pressed="true">经典</button><button data-style="retro" aria-pressed="false">复古</button><button data-style="dimensional" aria-pressed="false">立体</button></div></div>
+            <div class="mode-picker"><span class="difficulty-label">对抗模式</span><div class="segmented" id="gameMode" role="group" aria-label="选择对战模式"><button class="active" data-mode="ai" aria-pressed="true">人机对抗</button><button data-mode="local" aria-pressed="false">双人对抗</button></div></div>
+            <label class="difficulty-picker"><span class="difficulty-label">电脑难度</span><select id="difficulty" aria-label="选择电脑对手难度"><option value="easy">简单</option><option value="medium" selected>普通</option><option value="hard">困难</option><option value="superhard">超难</option><option value="extreme">极难</option></select></label>
+          </div>
           <div class="board-frame">
             <div class="board" id="board" role="grid" aria-label="中国象棋棋盘"></div>
           </div>
