@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="theme-color" content="#f4eee2" />
+  <meta name="theme-color" content="#22231f" />
   <title>楚河汉界 · 在线象棋</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -22,8 +22,11 @@
           <div class="round-pill"><span class="round-dot"></span><span id="statusText">红方走棋</span></div>
         </div>
 
-        <div class="mode-picker"><span class="difficulty-label">对战模式</span><div class="segmented" id="gameMode" role="group" aria-label="选择对战模式"><button class="active" data-mode="ai" aria-pressed="true">人机对抗</button><button data-mode="local" aria-pressed="false">双人对抗</button></div></div>
-        <div class="difficulty-picker"><span class="difficulty-label">电脑难度</span><div class="segmented" id="difficulty" role="group" aria-label="选择电脑对手难度"><button data-level="easy" aria-pressed="false">简单</button><button class="active" data-level="medium" aria-pressed="true">普通</button><button data-level="hard" aria-pressed="false">困难</button><button data-level="superhard" aria-pressed="false">超难</button><button data-level="extreme" aria-pressed="false">极难</button></div></div>
+        <div class="game-options">
+          <label class="style-picker"><span class="difficulty-label">棋盘风格</span><select id="boardStyle" aria-label="选择棋盘和棋子风格"><option value="classic">经典</option><option value="retro" selected>复古</option><option value="dimensional">立体</option></select></label>
+          <label class="mode-picker"><span class="difficulty-label">对抗模式</span><select id="gameMode" aria-label="选择对战模式"><option value="ai">人机对抗</option><option value="local">双人对抗</option></select></label>
+          <label class="difficulty-picker"><span class="difficulty-label">电脑难度</span><select id="difficulty" aria-label="选择电脑对手难度"><option value="easy">简单</option><option value="medium" selected>普通</option><option value="hard">困难</option><option value="superhard">超难</option><option value="extreme">极难</option></select></label>
+        </div>
 
         <div class="board-wrap">
           <div class="board-frame">
