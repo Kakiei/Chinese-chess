@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#f4eee2" />
+  <title>楚河汉界 · 在线象棋</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="楚河汉界首页"><span class="brand-mark">棋</span><span>楚河汉界<small>CHINESE CHESS</small></span></a>
+      <div class="top-meta"><span class="live-dot"></span> 单机对弈 <span class="meta-divider">·</span> 随时开局</div>
+      <div class="header-actions"><button class="icon-button" id="themeToggle" aria-label="切换深色背景" aria-pressed="false" title="切换黑白背景">◐</button><button class="icon-button" id="soundToggle" aria-label="切换音效" title="音效开关">♫</button></div>
+    </header>
+
+    <main class="layout">
+      <section class="game-column">
+        <div class="game-heading">
+          <div><div class="eyebrow">CLASSIC XIANGQI</div><h1>下一步，轮到你</h1><p>在方格交点落子，守住你的楚河汉界。</p></div>
+          <div class="round-pill"><span class="round-dot"></span><span id="statusText">红方走棋</span></div>
+        </div>
+
+        <div class="mode-picker"><span class="difficulty-label">对战模式</span><div class="segmented" id="gameMode" role="group" aria-label="选择对战模式"><button class="active" data-mode="ai" aria-pressed="true">人机对抗</button><button data-mode="local" aria-pressed="false">双人对抗</button></div></div>
+        <div class="difficulty-picker"><span class="difficulty-label">电脑难度</span><div class="segmented" id="difficulty" role="group" aria-label="选择电脑对手难度"><button data-level="easy" aria-pressed="false">简单</button><button class="active" data-level="medium" aria-pressed="true">普通</button><button data-level="hard" aria-pressed="false">困难</button><button data-level="superhard" aria-pressed="false">超难</button><button data-level="extreme" aria-pressed="false">极难</button></div></div>
+
+        <div class="board-wrap">
+          <div class="board-frame">
+            <div class="board" id="board" role="grid" aria-label="中国象棋棋盘"></div>
+          </div>
+          <div class="board-caption"><span><i class="legend-red"></i><span id="redCaption">红方 · 你</span></span><span>楚河&nbsp;&nbsp; 汉界</span><span><i class="legend-black"></i><span id="blackCaption">黑方 · 电脑</span></span></div>
+        </div>
+
+        <div class="controls">
+          <button class="primary-button" id="newGame"><span>＋</span> 新开一局</button>
+          <button class="secondary-button" id="undoMove" disabled><span>↶</span> 悔棋</button>
+          <button class="secondary-button" id="flipBoard" aria-pressed="false"><span>⇅</span> 翻转棋盘</button>
+          <button class="secondary-button" id="hintMove"><span>✦</span> 提示</button>
+        </div>
+      </section>
+
+      <aside class="side-column">
+        <section class="panel opponent-panel">
+          <div class="panel-title"><span>本局对手</span><span class="online-label" id="modeBadge"><i></i><span id="modeBadgeText">人机对弈</span></span></div>
+          <div class="opponent-card"><div class="avatar" id="opponentAvatar">AI</div><div class="opponent-info"><strong id="opponentName">棋友 · 小弈</strong><span id="opponentDescription">稳扎稳打的象棋搭档</span></div><div class="rank-mark">♟</div></div>
+        </section>
+
+        <section class="panel record-panel">
+          <div class="panel-title"><span>对局记录</span><span class="move-count" id="moveCount">0 回合</span></div>
+          <div class="record-header"><span>回合</span><span>红方</span><span>黑方</span></div>
+          <div class="move-list" id="moveList"><div class="empty-record"><span class="empty-icon">♜</span><strong>棋局尚未开始</strong><small>点击棋子，选择一个交点落子</small></div></div>
+          <div class="record-footer"><span class="turn-indicator"><i></i><b id="turnLabel">红方思考中</b></span><button id="copyRecord" class="text-button" disabled>复制棋谱 ↗</button></div>
+        </section>
+
+        <section class="panel archive-panel" aria-label="历史对局与积分">
+          <div class="panel-title"><span>对抗档案</span><span class="move-count">本设备保存</span></div>
+          <div class="archive-scoreline"><div><small>已完成对局</small><strong id="archiveCount">0</strong></div><div><small>红方积分</small><strong id="redPoints">0</strong></div><div><small>黑方积分</small><strong id="blackPoints">0</strong></div></div>
+          <div class="archive-records" id="archiveRecords"><div class="archive-empty">完成一局后，棋谱和结果会保存在这里。</div></div>
+          <div class="archive-footnote">胜 3 分 · 和 1 分 · 负 0 分</div>
+        </section>
+
+        <div class="tip-card"><span class="tip-icon">✧</span><div><strong>小提示</strong><p>马走日，象走田；炮打隔山子，车走直线。将帅不能照面哦。</p></div></div>
+        <footer class="side-footer">一局好棋，从容开始 <span>·</span> 祝你棋开得胜</footer>
+      </aside>
+    </main>
+    <div class="toast" id="toast" role="status"></div>
+    <div class="modal-backdrop" id="modal"><div class="result-modal"><div class="result-seal" id="resultSeal">胜</div><div class="eyebrow">GAME OVER</div><h2 id="resultTitle">恭喜获胜</h2><p id="resultMessage">这一局下得漂亮。</p><button class="primary-button" id="playAgain">再来一局 <span>→</span></button></div></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
